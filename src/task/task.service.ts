@@ -1,22 +1,23 @@
 import { Injectable } from '@nestjs/common';
-import { CreateTaskDto } from './dto/create-task.dto';
-import { UpdateTaskDto } from './dto/update-task.dto';
+import { TaskCreateDto } from './dto/task-create.dto';
+import { TaskUpdateDto } from './dto/task-update.dto';
+import {TaskEntity} from "./entities/task.entity";
 
 @Injectable()
 export class TaskService {
-  create(createTaskDto: CreateTaskDto) {
+  create(createTaskDto: TaskCreateDto) {
     return 'This action adds a new task';
   }
 
   findAll() {
-    return `This action returns all task`;
+    return TaskEntity.find()
   }
 
   findOne(id: number) {
     return `This action returns a #${id} task`;
   }
 
-  update(id: number, updateTaskDto: UpdateTaskDto) {
+  update(id: number, updateTaskDto: TaskUpdateDto) {
     return `This action updates a #${id} task`;
   }
 

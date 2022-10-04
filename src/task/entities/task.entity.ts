@@ -1,34 +1,43 @@
-import {BaseEntity, Column, PrimaryGeneratedColumn} from "typeorm";
+import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
-export class Task extends BaseEntity {
-    @PrimaryGeneratedColumn('uuid')
-    id: string;
+@Entity({
+  database: 'todolist',
+  name: 'tasks',
+})
 
-    @Column({
+export class TaskEntity extends BaseEntity {
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
 
-    })
-    title: string;
+  @Column()
+  title: string;
 
-    @Column()
-    description: string;
+  @Column({
+    type: 'datetime',
+    default: null,
+  })
+  createdAt: Date | string;
 
-    @Column({
-        type: 'datetime',
-        default: null,
-    })
-    created_at: Date | string;
+  @Column({
+    type: 'datetime',
+    default: null,
+  })
+  editedAt: Date | string;
 
-    @Column()
-    user_id: string;
+  @Column()
+  createdByUserId: string;
 
-    @Column({
-        type: 'datetime',
-        default: null,
-    })
-    expiration: Date | string;
+  @Column({
+    type: 'datetime',
+    default: null,
+  })
+  expiration: Date | string;
 
-    @Column()
-    status: string;
+  @Column({
+    default: 'Nowy'
+  })
+  status: string;
 
-
+  @Column()
+  priority: string;
 }
