@@ -11,6 +11,7 @@ import { TaskService } from './task.service';
 import { TaskCreateDto } from './dto/task-create.dto';
 import { TaskUpdateDto } from './dto/task-update.dto';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+import {GetListOfTaskResponse} from "../interfaces/task";
 
 
 @ApiBearerAuth()
@@ -24,8 +25,8 @@ export class TaskController {
     return this.taskService.create(createTaskDto);
   }
 
-  @Get()
-  findAll() {
+  @Get('list')
+  findAll(): Promise<GetListOfTaskResponse> {
     return this.taskService.findAll();
   }
 
