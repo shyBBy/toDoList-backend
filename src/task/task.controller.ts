@@ -20,7 +20,7 @@ import {GetListOfTaskResponse} from "../interfaces/task";
 export class TaskController {
   constructor(private readonly taskService: TaskService) {}
 
-  @Post()
+  @Post('create')
   create(@Body() createTaskDto: TaskCreateDto) {
     return this.taskService.create(createTaskDto);
   }
