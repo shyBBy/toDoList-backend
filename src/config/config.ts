@@ -12,6 +12,6 @@ export const config = {
   dbUsername: 'todosadmin',
   dbPassword: 'todos123',
   dbSynchronize: true,
-  dbLogging: true,
+  dbLogging: false,
   // corsFrontDomain: 'http://127.0.0.1:5173/',
 };

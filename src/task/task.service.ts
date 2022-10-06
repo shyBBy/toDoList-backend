@@ -10,6 +10,12 @@ export class TaskService {
   async create(createTaskDto: TaskCreateDto) {
     const {title} = createTaskDto
     try {
+      if (title.length === 0) {
+        return {
+          message: `Nie można utworzyć taska bez podania tytułu.`,
+          isSuccess: false,
+        }
+      }
       const task = new TaskEntity();
       const date = new Date()
       task.title = title;
@@ -27,7 +33,6 @@ export class TaskService {
 
 
     } catch (e) {
-      console.log(e)
       throw new HttpException(
           {
             message: `Coś poszło nie tak, spróbuj później.`,
